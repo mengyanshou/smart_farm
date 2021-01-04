@@ -36,7 +36,13 @@ class _SmartFarmState extends State<SmartFarm> {
   @override
   void initState() {
     super.initState();
-    Mqtt();
+    init();
+  }
+
+  void init() async {
+    Mqtt mqtt = Mqtt();
+    await Future.delayed(Duration(milliseconds: 100));
+    mqtt.connect();
   }
 
   @override
@@ -56,6 +62,11 @@ class _SmartFarmState extends State<SmartFarm> {
                     crossAxisAlignment: WrapCrossAlignment.end,
                     runSpacing: 10,
                     children: [
+                      Image.network(
+                        'http://nightmare.fun/File/MToolkit/hong.jpg',
+                        width: 64,
+                        height: 64,
+                      ),
                       for (int index in List.generate(10, (index) => null))
                         OpenContainer(
                           useRootNavigator: true,

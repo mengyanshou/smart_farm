@@ -1,24 +1,14 @@
+import 'dart:convert';
+
 import 'package:mqtt_client/mqtt_client.dart';
+import 'package:mqtt_client/mqtt_server_client.dart';
 import 'package:typed_data/typed_buffers.dart';
 
 class Mqtt {
   factory Mqtt() => _getInstance();
   Mqtt._internal() {
-    Mqtt._();
-  }
-  String server = 'broker.emqx.io';
-  int port = 1883;
-  String clientIdentifier = 'd7016608e17b4190a20e60450ac8dafa';
-  // 测试
-  String subTopic = 'nightmare';
-  String publishTopic = 'nightmare';
-  MqttQos qos = MqttQos.atLeastOnce;
-  MqttClient mqttClient;
-  static Mqtt _instance;
-
-  Mqtt._() {
-    mqttClient = MqttClient.withPort(server, clientIdentifier, port);
-    mqttClient.logging(on: true);
+    mqttClient = MqttServerClient.withPort(server, clientIdentifier, port);
+    // mqttClient.logging(on: true);
 
     ///连接成功回调
     mqttClient.onConnected = _onConnected;
@@ -32,6 +22,16 @@ class Mqtt {
     ///订阅失败回调
     mqttClient.onSubscribeFail = _onSubscribeFail;
   }
+  String server = 'nightmare.fun';
+  int port = 1883;
+  String clientIdentifier = '12323';
+  // 测试
+  String subTopic = 'nightmare';
+  String publishTopic = 'nightmare';
+  MqttQos qos = MqttQos.atLeastOnce;
+  MqttClient mqttClient;
+  static Mqtt _instance;
+
   static Mqtt get instance => _getInstance();
 
   static Mqtt _getInstance() {
@@ -72,7 +72,7 @@ class Mqtt {
       m.payload.writeTo(messageStream);
 
       ///打印出来
-      print(uint8buffer.toString());
+      print(utf8.decode(uint8buffer.buffer.asInt8List()));
     });
   }
 
