@@ -12,6 +12,10 @@ dependencies:
   flutter:
     sdk: flutter
   mqtt_client: ^8.1.0
+  # svg图像
+  flutter_svg: ^0.19.1
+  # Flutter新开放的共享元素动画
+  animations: ^1.0.0+5
 
 dev_dependencies:
   flutter_test:
@@ -19,3 +23,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/icon/
