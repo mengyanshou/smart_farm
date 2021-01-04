@@ -6,7 +6,7 @@ class Mqtt {
   Mqtt._internal() {
     Mqtt._();
   }
-  String server = 'nightmare.fun';
+  String server = 'broker.emqx.io';
   int port = 1883;
   String clientIdentifier = 'd7016608e17b4190a20e60450ac8dafa';
   // 测试
@@ -18,6 +18,7 @@ class Mqtt {
 
   Mqtt._() {
     mqttClient = MqttClient.withPort(server, clientIdentifier, port);
+    mqttClient.logging(on: true);
 
     ///连接成功回调
     mqttClient.onConnected = _onConnected;
