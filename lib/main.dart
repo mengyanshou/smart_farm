@@ -67,7 +67,7 @@ class _SmartFarmState extends State<SmartFarm> {
                         width: 64,
                         height: 64,
                       ),
-                      for (int index in List.generate(10, (index) => null))
+                      for (int index in List.generate(10, (index) => index))
                         OpenContainer(
                           useRootNavigator: true,
                           tappable: true,
@@ -104,7 +104,7 @@ class _SmartFarmState extends State<SmartFarm> {
                                   child: Column(
                                     children: [
                                       Text(
-                                        '空气温湿度',
+                                        '空气温湿度${index}',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 18.0,
