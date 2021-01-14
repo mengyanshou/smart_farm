@@ -32,7 +32,7 @@ class ServerChannel extends ApplicationChannel {
     router.route("/version").linkFunction((request) async {
       return Response.ok({
         "versionName": "1.0.0-dev",
-        "versionCode": 1,
+        "versionCode": 2,
       });
     });
 
