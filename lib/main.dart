@@ -4,8 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:smart_farm/global/widget/custom_card.dart';
 
 import 'global/mqtt_instance.dart';
-import 'page/control_page.dart';
-import 'page/device_detail_page.dart';
+import 'module/control_page.dart';
+import 'module/device_detail_page.dart';
 
 void main() {
   runApp(MyApp());
