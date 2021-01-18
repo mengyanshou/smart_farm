@@ -14,7 +14,7 @@ class Mqtt {
     mqttClient.onConnected = _onConnected;
 
     ///连接断开回调
-    mqttClient.onDisconnected = _onDisconnected();
+    mqttClient.onDisconnected = _onDisconnected;
 
     ///订阅成功回调
     mqttClient.onSubscribed = _onSubscribed;
@@ -40,19 +40,19 @@ class Mqtt {
   }
 
   ///连接
-  connect() {
+  void connect() {
     mqttClient.connect();
     _log("connecting");
   }
 
   ///断开连接
-  disconnect() {
+  void disconnect() {
     mqttClient.disconnect();
     _log("disconnect");
   }
 
   ///发布消息
-  publishMessage(String msg) {
+  void publishMessage(String msg) {
     ///int数组
     Uint8Buffer uint8buffer = Uint8Buffer();
 
@@ -64,7 +64,7 @@ class Mqtt {
   }
 
   ///消息监听
-  _onData(List<MqttReceivedMessage<MqttMessage>> data) {
+  void _onData(List<MqttReceivedMessage<MqttMessage>> data) {
     Uint8Buffer uint8buffer = Uint8Buffer();
     var messageStream = MqttByteBuffer(uint8buffer);
     data.forEach((MqttReceivedMessage<MqttMessage> m) {
@@ -76,29 +76,29 @@ class Mqtt {
     });
   }
 
-  _onConnected() {
+  void _onConnected() {
     _log("_onConnected");
 
     ///连接成功的时候订阅消息
     mqttClient.subscribe(subTopic, qos);
   }
 
-  _onDisconnected() {
+  void _onDisconnected() {
     _log("_onDisconnect");
   }
 
-  _onSubscribed(String topic) {
+  void _onSubscribed(String topic) {
     _log("_onSubscribed");
 
     ///在订阅成功的时候注册消息监听
     mqttClient.updates.listen(_onData);
   }
 
-  _onSubscribeFail(String topic) {
+  void _onSubscribeFail(String topic) {
     _log("_onSubscribeFail");
   }
 
-  _log(String msg) {
+  void _log(String msg) {
     print("MQTT-->$msg");
   }
 }

@@ -17,6 +17,8 @@ dependencies:
   # Flutter新开放的共享元素动画
   animations: ^1.0.0+5
 
+  # 屏幕适配
+  flutter_screenutil: ^2.3.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

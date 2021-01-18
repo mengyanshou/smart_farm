@@ -1,14 +1,29 @@
+import 'dart:io';
+
 import 'package:animations/animations.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smart_farm/global/widget/custom_card.dart';
 
 import 'global/mqtt_instance.dart';
-import 'module/control_page.dart';
-import 'module/device_detail_page.dart';
+import 'module/control/pages/control_page.dart';
+import 'module/home/pages/device_detail_page.dart';
+import 'module/login/pages/login_page.dart';
+import 'themes/default_theme_data.dart';
 
 void main() {
   runApp(MyApp());
+}
+
+bool isMobilePhone() {
+  return Platform.isAndroid || Platform.isIOS;
+}
+
+// 判断当前的设备是否是桌面设备
+bool isDesktop() {
+  return !isMobilePhone();
 }
 
 class MyApp extends StatelessWidget {
@@ -18,10 +33,34 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: SmartFarm(),
+      builder: (BuildContext context, Widget navigator) {
+        if (kIsWeb || isDesktop()) {
+          ScreenUtil.init(
+            context,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            allowFontScaling: false,
+          );
+        } else {
+          ScreenUtil.init(
+            context,
+            width: 414,
+            height: 896,
+            allowFontScaling: false,
+          );
+        }
+        // // config中的Dimens获取不到ScreenUtil，因为ScreenUtil中用到的MediaQuery只有在
+        // // WidgetApp或者MaterialApp中才能获取到，所以在build方法中处理主题
+        final bool isDarkTheme =
+            Theme.of(context).brightness == Brightness.dark;
+        final ThemeData theme =
+            isDarkTheme ? DefaultThemeData.dark() : DefaultThemeData.light();
+        return Theme(
+          data: theme,
+          child: navigator,
+        );
+      },
+      home: LoginPage(),
     );
   }
 }
@@ -41,7 +80,7 @@ class _SmartFarmState extends State<SmartFarm> {
 
   void init() async {
     Mqtt mqtt = Mqtt();
-    await Future.delayed(Duration(milliseconds: 100));
+    await Future<void>.delayed(Duration(milliseconds: 100));
     mqtt.connect();
   }
 
@@ -62,11 +101,11 @@ class _SmartFarmState extends State<SmartFarm> {
                     crossAxisAlignment: WrapCrossAlignment.end,
                     runSpacing: 10,
                     children: [
-                      Image.network(
-                        'http://nightmare.fun/File/MToolkit/hong.jpg',
-                        width: 64,
-                        height: 64,
-                      ),
+                      // Image.network(
+                      //   'http://nightmare.fun/File/MToolkit/hong.jpg',
+                      //   width: 64,
+                      //   height: 64,
+                      // ),
                       for (int index in List.generate(10, (index) => index))
                         OpenContainer(
                           useRootNavigator: true,
