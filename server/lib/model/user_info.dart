@@ -2,9 +2,10 @@ import 'package:server/server.dart';
 
 class User extends ManagedObject<_User> implements _User {
   User() {
-    emali ??= '';
+    email ??= '';
     mobile ??= '';
     qq ??= '';
+    role ??= 0;
   }
 }
 
@@ -15,7 +16,8 @@ class _User {
   String password;
   String mobile;
   String qq;
-  String emali;
+  String email;
+  int role;
 
   @Column(indexed: true) //添加索引
   DateTime createDate;

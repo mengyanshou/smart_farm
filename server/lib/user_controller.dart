@@ -98,7 +98,7 @@ class UserController extends ResourceController {
       return response;
     }
     final query = Query<User>(context)
-      ..values.emali = user.emali
+      ..values.email = user.email
       ..values.mobile = user.mobile
       ..values.qq = user.qq
       ..where((a) => a.id).equalTo(id);
