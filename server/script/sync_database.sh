@@ -1,0 +1,1 @@
+pub run aqueduct db upgrade
