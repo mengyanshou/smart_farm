@@ -5,7 +5,7 @@ class User extends ManagedObject<_User> implements _User {
     email ??= '';
     mobile ??= '';
     qq ??= '';
-    role ??= 0;
+    role ??= 1;
   }
 }
 
