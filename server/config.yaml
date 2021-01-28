@@ -1,6 +1,6 @@
 port: 8000
 database:
-  username: postgresql
+  username: postgres
   password: mys906262255
   host: localhost
   port: 5432
