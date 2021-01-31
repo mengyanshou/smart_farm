@@ -1,21 +1,35 @@
 # server
 
-## Running the Application Locally
+## 接口验证
+所有的接口访问都需要添加header
+API-Key=Y29tLm5pZ2h0bWFyZQ==
+## 注册
+/register
+只有username和password是必须
 
-Run `aqueduct serve` from this directory to run the application. For running within an IDE, run `bin/main.dart`. By default, a configuration file named `config.yaml` will be used.
+## 登录/login
+采用OAuth2.0验证标准，需要交换token
+首先规定body
 
-To generate a SwaggerUI client, run `aqueduct document client`.
+**Content-Type=application/x-www-form-urlencoded**
 
-## Running Application Tests
+需要参数：
 
-To run all tests for this application, run the following in this directory:
-
+```shell
+username
+password
+grant_type=password
 ```
-pub run test
+
+第三个参数固定
+
+添加header
+
+```shell
+Authorization=Basic Y29tLm5pZ2h0bWFyZS50ZXJtYXJlOmNvbS5uaWdodG1hcmU=
 ```
 
-The default configuration file used when testing is `config.src.yaml`. This file should be checked into version control. It also the template for configuration files used in deployment.
-
-## Deploying an Application
-
-See the documentation for [Deployment](https://aqueduct.io/docs/deploy/).
+## 用户数据库访问
+登录接口会返回一个token字段到用户对象中，将这个token保留
+添加header
+Authorization=Bearer $token
