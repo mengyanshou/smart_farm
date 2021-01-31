@@ -1,21 +1,24 @@
+import 'package:aqueduct/managed_auth.dart';
 import 'package:server/server.dart';
 
-class User extends ManagedObject<_User> implements _User {
+class User extends ManagedObject<_User>
+    implements _User, ManagedAuthResourceOwner<_User> {
   User() {
-    email ??= '';
     mobile ??= '';
     qq ??= '';
     role ??= 1;
+    salt ??= '';
   }
 }
 
-class _User {
+class _User extends ResourceOwnerTableDefinition {
+  @override
   @primaryKey //作为主键 == @
   int id;
-  String username;
   String password;
   String mobile;
   String qq;
+  @Column(unique: true, nullable: true) //添加索引
   String email;
   int role;
 

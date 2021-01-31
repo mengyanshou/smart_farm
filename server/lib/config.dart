@@ -1,3 +1,3 @@
 class Config {
-  static const String apiKey = 'gc8LOv65skbRuWu0BGgWrg==';
+  static const String apiKey = 'Y29tLm5pZ2h0bWFyZQ==';
 }

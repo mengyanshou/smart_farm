@@ -1,11 +1,12 @@
-import 'package:server/login_controller.dart';
+import 'package:aqueduct/managed_auth.dart';
 
 import 'app_config.dart';
-import 'server.dart';
-import 'token_controller.dart';
-import 'user_controller.dart';
+import 'controller/auth_controller.dart';
+import 'controller/register_controller.dart';
+import 'server.dart' hide AuthController;
+import 'controller/user_controller.dart';
 import 'model/user_info.dart';
-import 'validate_controller.dart';
+import 'controller/validate_controller.dart';
 
 /// This type initializes an application.
 ///
@@ -13,7 +14,7 @@ import 'validate_controller.dart';
 /// database connections. See http://aqueduct.io/docs/http/channel/.
 class ServerChannel extends ApplicationChannel {
   ManagedContext context; //可通过该实例操作数据库
-
+  AuthServer authServer;
   @override
   Future prepare() async {
     logger.onRecord.listen(
@@ -30,6 +31,9 @@ class ServerChannel extends ApplicationChannel {
         _config.database.port,
         _config.database.databaseName); //管理与单个数据库的连接
     context = ManagedContext(dataModel, psc);
+    final delegate = ManagedAuthDelegate<User>(context);
+    authServer = AuthServer(delegate);
+
 //new
   }
 
@@ -55,13 +59,18 @@ class ServerChannel extends ApplicationChannel {
       });
     });
     router
-        .route("/user/[:id]")
+        .route("register")
         .link(() => ValidateController())
+        .link(() => RegisterController(context));
+    router
+        .route("/user")
+        .link(() => ValidateController())
+        .link(() => Authorizer.bearer(authServer))
         .link(() => UserController(context));
     router
         .route("/login")
         .link(() => ValidateController())
-        .link(() => LoginController(context));
+        .link(() => AuthController(authServer, context));
     return router;
   }
 }

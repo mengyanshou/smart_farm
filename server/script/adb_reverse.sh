@@ -1,0 +1,1 @@
+adb reverse tcp:9000 tcp:9000
