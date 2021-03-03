@@ -21,6 +21,9 @@ class _User extends ResourceOwnerTableDefinition {
   @Column(unique: true, nullable: true) //添加索引
   String email;
   int role;
+  String realName;
+  int studentNumer;
+  String studentDepart;
 
   @Column(indexed: true) //添加索引
   DateTime createDate;
