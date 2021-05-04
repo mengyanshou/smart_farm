@@ -12,8 +12,14 @@ dependencies:
   flutter:
     sdk: flutter
   mqtt_client: ^8.1.0
+
+  global_repository:
+    git: https://github.com/nightmare-space/global_repository
+  get: ^4.1.4
+  signale:
+    git: https://github.com/Nightmare-MY/signale
   # svg图像
-  flutter_svg: ^0.19.1
+  flutter_svg: ^0.19.3
   # Flutter新开放的共享元素动画
   animations: ^1.0.0+5
 
@@ -27,3 +33,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/icon/
+    - assets/images/
