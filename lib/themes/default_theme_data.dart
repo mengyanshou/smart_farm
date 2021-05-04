@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart' show CupertinoThemeData;
 import 'package:flutter/material.dart';
+import 'package:smart_farm/config/app_colors.dart';
 import 'package:smart_farm/config/dimens.dart';
 
 class DefaultThemeData {
-  static const Color _primary = Color(0xff4fac64);
+  static const Color _primary = Color(0xff68a180);
   static const Color _dark_primary = Color(0xFF01AAFF);
 
   static const Color _on_primary = Colors.white;
@@ -211,7 +212,7 @@ class DefaultThemeData {
       appBarTheme: lightThemeData.appBarTheme.copyWith(
         centerTitle: true,
         brightness: Brightness.light,
-        color: colorSchema.surface,
+        color: Colors.transparent,
         elevation: 0,
         iconTheme: lightThemeData.iconTheme.copyWith(
           color: const Color(0xFF595959),
@@ -223,7 +224,7 @@ class DefaultThemeData {
           headline6: lightThemeData.textTheme.headline6.copyWith(
             fontSize: Dimens.font_sp20,
             fontWeight: FontWeight.bold,
-            color: const Color(0xFF595959),
+            color: AppColors.fontTitle,
           ),
           button: lightThemeData.textTheme.button.copyWith(
             fontSize: 16,
@@ -280,12 +281,12 @@ class DefaultThemeData {
         headline6: lightThemeData.textTheme.headline6.copyWith(
           fontSize: Dimens.font_sp20,
           fontWeight: FontWeight.w500,
-          color: const Color(0xFF595959),
+          color: AppColors.fontTitle,
         ),
         subtitle1: lightThemeData.textTheme.subtitle1.copyWith(
           fontSize: Dimens.font_sp16,
           fontWeight: FontWeight.w500,
-          color: const Color(0xFF262626),
+          color: AppColors.fontTitle,
         ),
         subtitle2: lightThemeData.textTheme.subtitle2.copyWith(
           fontSize: Dimens.font_sp16,
