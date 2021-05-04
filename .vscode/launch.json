@@ -5,9 +5,34 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "smart_farm",
+            "name": "Mac Desktop",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "deviceId": "macos"
+        },
+        {
+            "name": "Chrome",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "Chrome"
+        },
+        {
+            "name": "Windows Desktop",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "windows"
+        },
+        {
+            "name": "小米10",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "Mi 10"
+        },
+        {
+            "name": "红米K30",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "Redmi K30"
         }
     ]
 }
