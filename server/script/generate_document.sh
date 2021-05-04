@@ -1,1 +1,0 @@
-aqueduct document > swagger.json

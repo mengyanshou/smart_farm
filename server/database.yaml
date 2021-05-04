@@ -1,5 +1,0 @@
-username: postgres
-password: mys906262255
-host: localhost
-port: 5432
-databaseName: postgres
