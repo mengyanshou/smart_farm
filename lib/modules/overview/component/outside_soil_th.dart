@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smart_farm/config/candy_colors.dart';
 import 'package:smart_farm/config/dimens.dart';
+import 'package:smart_farm/samples/line_chart_sample1.dart';
 
 /// 室外土壤温湿度
 class OutsideSoilTH extends StatefulWidget {
@@ -19,32 +20,36 @@ class _OutsideSoilTHState extends State<OutsideSoilTH> {
       ),
       child: Column(
         children: [
-          Text(
-            '室外土壤温湿度',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 18.0,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                'assets/icon/Temperature-humidity.svg',
+                width: Dimens.gap_dp40,
+                height: Dimens.gap_dp40,
+                color: CandyColors.candyGreen,
+              ),
+              SizedBox(
+                width: Dimens.gap_dp8,
+              ),
+              Text(
+                '室外土壤温湿度',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.0,
+                ),
+              ),
+            ],
           ),
           SizedBox(
             height: 8,
           ),
-          SvgPicture.asset(
-            'assets/icon/Temperature-humidity.svg',
-            width: Dimens.gap_dp40,
-            height: Dimens.gap_dp40,
-            color: CandyColors.candyGreen,
-          ),
-          SizedBox(
-            height: 8,
-          ),
-          Text(
-            'XX/XX',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.grey,
-              // color: Theme.of(context).accentColor,
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 28,
+              right: 28,
             ),
+            child: LineChartSample1(),
           ),
         ],
       ),
