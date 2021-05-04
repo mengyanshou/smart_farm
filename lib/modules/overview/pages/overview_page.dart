@@ -11,6 +11,8 @@ import 'package:smart_farm/modules/overview/component/greenhouse_temperature_hum
 import 'package:smart_farm/modules/overview/component/outside_soil_th.dart';
 import 'package:smart_farm/modules/overview/component/outside_temperature_humidity.dart';
 import 'package:smart_farm/modules/overview/controllers/message_controller.dart';
+import 'package:smart_farm/samples/line_chart_sample1.dart';
+import 'package:smart_farm/samples/line_chart_sample2.dart';
 
 class OverviewPage extends StatefulWidget {
   @override
@@ -55,32 +57,33 @@ class _OverviewPageState extends State<OverviewPage> {
               ),
               child: Column(
                 children: [
-                  Text(
-                    '大棚土壤温湿度',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/icon/Temperature-humidity.svg',
+                        width: Dimens.gap_dp40,
+                        height: Dimens.gap_dp40,
+                        color: CandyColors.candyPink,
+                      ),
+                      SizedBox(
+                        width: Dimens.gap_dp8,
+                      ),
+                      Text(
+                        '大棚土壤温湿度',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0,
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(
                     height: 8,
                   ),
-                  SvgPicture.asset(
-                    'assets/icon/Temperature-humidity.svg',
-                    width: Dimens.gap_dp40,
-                    height: Dimens.gap_dp40,
-                    color: CandyColors.candyPink,
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text(
-                    'XX/XX',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey,
-                      // color: Theme.of(context).accentColor,
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 28.0, right: 28),
+                    child: LineChartSample1(),
                   ),
                 ],
               ),
@@ -94,32 +97,33 @@ class _OverviewPageState extends State<OverviewPage> {
               ),
               child: Column(
                 children: [
-                  Text(
-                    '大棚土壤酸碱度',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/icon/酸碱度.svg',
+                        width: Dimens.gap_dp40,
+                        height: Dimens.gap_dp40,
+                        color: CandyColors.indigo,
+                      ),
+                      SizedBox(
+                        width: Dimens.gap_dp8,
+                      ),
+                      Text(
+                        '大棚土壤酸碱度',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18.0,
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(
                     height: 8,
                   ),
-                  SvgPicture.asset(
-                    'assets/icon/酸碱度.svg',
-                    width: Dimens.gap_dp40,
-                    height: Dimens.gap_dp40,
-                    color: CandyColors.indigo,
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text(
-                    'XX/XX',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey,
-                      // color: Theme.of(context).accentColor,
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 28.0, right: 28),
+                    child: LineChartSample2(),
                   ),
                 ],
               ),
@@ -141,6 +145,7 @@ class _OverviewPageState extends State<OverviewPage> {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18.0,
+                            height: 1.0,
                           ),
                         ),
                         SizedBox(
@@ -184,15 +189,16 @@ class _OverviewPageState extends State<OverviewPage> {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18.0,
+                            height: 1.0,
                           ),
                         ),
                         SizedBox(
                           height: 8,
                         ),
-                        SvgPicture.asset(
-                          'assets/icon/PM2.5.svg',
-                          width: 50,
-                          height: 50,
+                        Image.asset(
+                          'assets/images/icon_pm25.png',
+                          width: Dimens.gap_dp40,
+                          height: Dimens.gap_dp40,
                           // color: Theme.of(context).accentColor,
                         ),
                         SizedBox(
@@ -227,6 +233,7 @@ class _OverviewPageState extends State<OverviewPage> {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18.0,
+                            height: 1.0,
                           ),
                         ),
                         SizedBox(
@@ -234,8 +241,8 @@ class _OverviewPageState extends State<OverviewPage> {
                         ),
                         SvgPicture.asset(
                           'assets/icon/风速.svg',
-                          width: 50,
-                          height: 50,
+                          width: Dimens.gap_dp40,
+                          height: Dimens.gap_dp40,
                         ),
                         SizedBox(
                           height: 8,
@@ -280,8 +287,8 @@ class _OverviewPageState extends State<OverviewPage> {
                         ),
                         SvgPicture.asset(
                           'assets/icon/风向.svg',
-                          width: 50,
-                          height: 50,
+                          width: Dimens.gap_dp40,
+                          height: Dimens.gap_dp40,
                           // color: Theme.of(context).accentColor,
                         ),
                         SizedBox(
