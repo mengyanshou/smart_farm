@@ -11,9 +11,9 @@ class GreenHouseTH extends GetView<MessageController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
+      padding: EdgeInsets.symmetric(
         horizontal: 4.0,
-        vertical: 8.0,
+        vertical: Dimens.gap_dp4,
       ),
       child: Column(
         children: [
