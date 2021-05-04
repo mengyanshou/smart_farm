@@ -19,14 +19,18 @@ class _SettingPageState extends State<SettingPage> {
         title: Text('设置'),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(
-            // horizontal: Dimens.gap_dp12,
-            ),
+        padding: EdgeInsets.symmetric(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SettingTitle(
               title: '开发者设置',
+            ),
+            Text(
+              '  整个数据模拟操作同样可以应用到web端',
+              style: TextStyle(
+                color: AppColors.fontDetail,
+              ),
             ),
             SettingItem(
               title: '室外空气温湿度数据模拟',

@@ -35,14 +35,17 @@ class AboutPage extends StatelessWidget {
                     color: Colors.grey,
                     fontSize: Dimens.font_sp16,
                   ),
-                )
+                ),
+                SizedBox(
+                  height: Dimens.setSp(200),
+                ),
               ],
             ),
           ),
           Align(
             alignment: Alignment(0, 0.5),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(16.0),
               child: Text(
                 '请注意这目前是一个测试版，是由 Flutter 框架开发的智慧农场客户端，优先完善数据展示，数据详情，设备控制功能。',
                 style: TextStyle(
