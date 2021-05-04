@@ -1,16 +1,13 @@
 # smart_farm
 
-A new Flutter project.
+- 这是用 Flutter 框架开发的锦城智慧农场客户端，这门技术现在已经广泛的应用在了移动应用上。
+但其框架带来的诸多特性，使得在PC平台上也有比较好的性能表现。在 Web 上也能勉强运行，但有明显的性能问题。
+- 我很热爱这门技术，所以如果将来锦城还能有一些学习这个框架的同学，可以通过这个项目来获得项目经验。
+- 我希望贡献此仓库的同学并不只是将此当做任务或者作业来做，而是真的能从中学到东西。
+- 我会完成项目的大部分架构的设计，以及前期的所有框架的搭建，但可能没有精力让其达到一个很完美的状态。
 
-## Getting Started
+> 目前图片资源来自徐靖鸿同学的android端
+## 难点
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+在 PC 上估计不能接入监控。在安卓上没问题，监控页面考虑直接用 Flutter 对接 Texture 或者 SurfaceView，
+对接 PlatformView 估计会有性能上的损耗，这在整个 Flutter 都是比较难的，对技术要求比较高。
