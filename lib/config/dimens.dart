@@ -44,4 +44,5 @@ class Dimens {
   static double get gap_dp80 => ScreenUtil().setWidth(80.0).toDouble();
   static double get gap_dp92 => ScreenUtil().setWidth(92.0).toDouble();
   static double setWidth(num width) => ScreenUtil().setWidth(width).toDouble();
+  static double setSp(num size) => ScreenUtil().setSp(size).toDouble();
 }
