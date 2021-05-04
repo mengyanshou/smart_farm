@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   mqtt_client: ^8.1.0
-
+  fl_chart: ^0.36.0
   global_repository:
     git: https://github.com/nightmare-space/global_repository
   get: ^4.1.4
