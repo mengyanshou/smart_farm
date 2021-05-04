@@ -1,17 +1,15 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
-
 import 'package:flutter/foundation.dart';
 import 'package:global_repository/global_repository.dart';
-import 'package:mqtt_client/mqtt_browser_client.dart';
 import 'package:mqtt_client/mqtt_client.dart';
-import 'package:mqtt_client/mqtt_server_client.dart';
 import 'package:signale/signale.dart';
 import 'package:typed_data/typed_buffers.dart';
+import 'server.dart' if (dart.library.html) 'browser.dart' as mqttsetup;
 
 String _randomBit(int len) {
-  const String scope = '123456789abcdefghijklmnopqrstuvwxyz'; //首位
+  const String scope = '123456789abcdefghijklmnopqrstuvwxyz';
   String result = '';
   for (int i = 0; i < len; i++) {
     result = result + scope[Random().nextInt(scope.length)];
@@ -26,15 +24,10 @@ class Mqtt {
     // print(Random().nextInt(99).toRadixString(16));
     Log.i('clientIdentifier -> $clientIdentifier');
     if (kIsWeb) {
-      mqttClient = MqttBrowserClient.withPort(
-        'ws://47.108.198.192',
-        clientIdentifier,
-        8083,
-      );
+      mqttClient = mqttsetup.setup(webAddr, clientIdentifier, webPort);
     } else {
-      mqttClient = MqttServerClient.withPort(server, clientIdentifier, port);
+      mqttClient = mqttsetup.setup(serverAddr, clientIdentifier, serverPort);
     }
-    // mqttClient.connect();
     mqttClient.logging(on: false);
     mqttClient.onConnected = onConnected;
     mqttClient.onDisconnected = onDisconnected;
@@ -62,8 +55,11 @@ class Mqtt {
     mqttClient.updates.listen(_onData);
   }
 
-  String server = '47.108.198.192';
-  int port = 1883;
+  String serverAddr = '47.108.198.192';
+  String webAddr = 'ws://47.108.198.192';
+  int serverPort = 1883;
+  int webPort = 8083;
+
   String clientIdentifier = _randomBit(18);
   // 测试
   String subTopic = 'nightmare/test';
@@ -84,10 +80,10 @@ class Mqtt {
   StreamController<Map<String, dynamic>> streamController =
       StreamController<Map<String, dynamic>>(
     onListen: () {
-      print('onListen');
+      // print('onListen');
     },
     onCancel: () {
-      print('onCancel');
+      // print('onCancel');
     },
   );
 
@@ -103,7 +99,7 @@ class Mqtt {
     mqttClient.publishMessage(publishTopic, qos, uint8buffer);
   }
 
-  /// 发布消息到已经鼎业的主题，主要用来模拟数据
+  /// 发布消息到已经订阅的主题，主要用来模拟数据
   void publishMessageToSubTopic(String msg) {
     ///int数组
     final Uint8Buffer uint8buffer = Uint8Buffer();
